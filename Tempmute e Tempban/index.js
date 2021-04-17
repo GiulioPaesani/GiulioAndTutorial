@@ -49,12 +49,12 @@ client.on("message", message => {
                         ruolo = message.guild.roles.cache.find(role => role.name == "Muted");
 
                         message.guild.channels.cache.forEach((canale) => {
-                                canale.overwritePermissions([
-                                        {
-                                                id: ruolo.id,
-                                                deny: ["SEND_MESSAGES", "ADD_REACTIONS", "SPEAK"]
-                                        }
-                                ])
+                                canale.updateOverwrite(ruolo, {
+                                        SEND_MESSAGES: false,
+                                        ADD_REACTIONS: false,
+                                        SPEAK: false 
+                                })
+
                         })
 
                         if (tempmute.hasOwnProperty(utente.user.id) || utente.roles.cache.has(ruolo)) {
