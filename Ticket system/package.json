@@ -1,0 +1,17 @@
+{
+  "name": "giulioandcode-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "expr-eval": "^2.0.2",
+    "file-system": "^1.2.2",
+    "mysql": "^2.18.1"
+  },
+  "description": ""
+}
