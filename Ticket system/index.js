@@ -9,8 +9,9 @@ client.on("ready", () => {
 
 //Prima di tutto mandare il messaggio del ticket
 client.on("message", message => {
-    if (message.content == "!ticket") {
-        message.channel.send("Ciao").then(msg => msg.react("📩"))
+    if (message.content == "!ciao") {
+        message.channel.send("Clicca sulla reazione per aprire un ticket")
+            .then(msg => msg.react("📩")) //Personalizzare l'emoji della reaction
     }
 })
 
