@@ -1,19 +1,27 @@
 const Discord = require('discord.js');
-const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] }); //<-- RICORDARSI QUESTO
 
-client.login("Nzk2Mzk4NDg2ODI4MDg5MzY0.X_XV4w.cXGBaFF3J2n7lP1kCE1b02A-HI4");
+client.login("Token");
 
 client.on("ready", () => {
     console.log("ONLINE")
 })
+
+//Prima di tutto mandare il messaggio del ticket
+client.on("message", message => {
+    if (message.content == "!ticket") {
+        message.channel.send("Ciao").then(msg => msg.react("📩"))
+    }
+})
+
 
 client.on("messageReactionAdd", async function (messageReaction, user) {
     if (user.bot) return
 
     if (messageReaction.message.partial) await messageReaction.message.fetch();
 
-    if (messageReaction._emoji.name == "📩") {
-        if (messageReaction.message.channel.id == "804688929109966848") {
+    if (messageReaction._emoji.name == "📩") { //Personalizzare l'emoji della reaction
+        if (messageReaction.message.channel.id == "idCanale") { //Settare canale
             messageReaction.users.remove(user);
             var server = messageReaction.message.channel.guild;
             if (server.channels.cache.find(canale => canale.topic == `User ID: ${user.id}`)) {
@@ -25,7 +33,7 @@ client.on("messageReactionAdd", async function (messageReaction, user) {
                 type: "text"
             }).then(canale => {
                 canale.setTopic(`User ID: ${user.id}`);
-                canale.setParent("793781892113498132")
+                canale.setParent("idCategoria") //Settare la categoria
                 canale.overwritePermissions([
                     {
                         id: server.id,
@@ -135,3 +143,4 @@ client.on("message", message => {
         }
     }
 })
+
