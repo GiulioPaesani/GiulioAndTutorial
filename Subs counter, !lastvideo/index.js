@@ -15,7 +15,7 @@ setInterval(function () {
     var canale = client.channels.cache.get("idCanaleCounter")
     ytch.getChannelInfo("idCanaleYoutube")
         .then(response => {
-            canale.setName(`🧑Subscribers: ${response.subscriberCounter}`)
+            canale.setName(`🧑Subscribers: ${response.subscriberCount}`)
         })
 }, 1000 * 60)
 
