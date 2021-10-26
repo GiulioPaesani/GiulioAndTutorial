@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>Tag e attributi sconosciuti - GiulioAndCode</title>
+    <script src="script.js"></script>
+    <meta http-equiv="refresh" content="secondi; https://www.google.it">
+</head>
+
+<body>
+    <!--COLOR PICKER-->
+    <input type="color" id="inputColor" value="#f12e12">
+    <button onclick="getColor()">Get color</button>
+
+    <!--LISTE SUGGERITE-->
+    <input type="text" list="lista" id="inputTest">
+    <datalist id="lista">
+        <option>Italia</option>
+        <option>Germania</option>
+        <option>Svizzera</option>
+        <option>Francia</option>
+    </datalist>
+    <button onclick="getValore()">Get valore</button>
+
+    <select id="inputTesto">
+        <option>Italia</option>
+        <option>Svizzera</option>
+        <option>Austria</option>
+        <option>Germania</option>
+    </select>
+    <button onclick="getValore()">Get valore</button>
+
+    <!--SEZIONI NASCOSTE-->
+    <details>
+        <summary>Sezione 1</summary>
+        <div>Ciao a tutti!</div>
+    </details>
+    <details>
+        <summary>Sezione 2</summary>
+        <div>Ehy!</div>
+    </details>
+
+    <!--BARRA DI PROGRESSO-->
+    <progress value="25" max="100" id="progresso"></progress>
+    <button onclick="cambiaValore()">Cambia valore</button>
+
+    <!--CONTENUTO EDITABILE-->
+    <p contenteditable="true" id="testoEditabile">Ciao a tutti!</p>
+    <button onclick="prendiValore()">Prendi valore</button>
+
+    <!--TESTO CON MOUSE-->
+    <p>Ciao a tutti! Questo è un testo di <b title="Ragazzo di 17 anni">Giulio</b></p>
+
+    <!--BORDO CON "TITOLO"-->
+    <fieldset>
+        <legend>Testo a caso</legend>
+        <p>Ciao a tutti! Io sono Giulio</p>
+    </fieldset>
+</body>
+
+</html>
