@@ -17,7 +17,7 @@ client.on("messageCreate", message => {
     var testo = message.content;
 
     parolacce.forEach(parola => {
-        if (message.content.includes(parola)) {
+        if (message.content.toLowerCase().includes(parola.toLowerCase())) {
             trovata = true;
             testo = testo.replace(eval(`/${parola}/g`), "###");
         }
