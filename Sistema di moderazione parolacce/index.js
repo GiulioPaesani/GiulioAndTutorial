@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const client = new Discord.Client(
-    { intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES"] }
-)
+const client = new Discord.Client({
+    intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES"]
+})
 
 client.login("token");
 
@@ -10,6 +10,8 @@ client.on("ready", () => {
 })
 
 client.on("messageCreate", message => {
+    if (message.channel.type == "DM") return
+
     if (message.member.roles.cache.has("idRuolo1") || message.member.roles.cache.has("idRuolo2")) return
 
     var parolacce = ["sedia", "lampada", "ciao come va"]
