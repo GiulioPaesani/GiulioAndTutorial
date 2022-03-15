@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/opus": "^0.7.0",
+    "@discordjs/voice": "^0.8.0",
+    "@distube/soundcloud": "^1.1.0",
+    "@distube/spotify": "^1.2.1",
+    "@distube/yt-dlp": "^1.0.2",
+    "@distube/ytdl-core": "^4.11.1",
+    "distube": "^3.3.2",
+    "ffmpeg-static": "^4.4.1",
+    "fs": "^0.0.1-security",
+    "libsodium-wrappers": "^0.7.9",
+    "opusscript": "^0.0.8",
+    "yt-search": "^2.10.3",
+    "ytdl-core": "^4.11.0"
+  }
+}
