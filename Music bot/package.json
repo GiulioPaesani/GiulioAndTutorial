@@ -1,0 +1,21 @@
+{
+  "name": "music-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@distube/soundcloud": "^1.1.0",
+    "@distube/spotify": "^1.2.1",
+    "discord.js": "^13.6.0",
+    "distube": "^3.3.2",
+    "libsodium-wrappers": "^0.7.9",
+    "node-gyp": "^9.0.0",
+    "opusscript": "^0.0.8"
+  }
+}
