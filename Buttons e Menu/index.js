@@ -1,81 +1,102 @@
-
 const Discord = require('discord.js');
-const client = new Discord.Client();
-
-const disbut = require("discord-buttons")
-disbut(client);
-
-const { MessageButton, MessageActionRow } = require("discord-buttons")
-const { MessageMenuOption, MessageMenu } = require("discord-buttons")
+const client = new Discord.Client({
+    intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES"]
+})
 
 client.login("token");
 
-client.on("message", message => {
-    if (message.content == "!bottoni") {
-        var button1 = new MessageButton()
+client.on("ready", () => {
+    console.log("ONLINE");
+})
+
+client.on("messageCreate", message => {
+    if (message.content == "!ciao") {
+        let embed = new Discord.MessageEmbed()
+            .setTitle("Ciao")
+
+        let button1 = new Discord.MessageButton()
             .setLabel("Cliccami")
-            .setStyle("url")
-            .setURL("https://www.google.it")
-        var button2 = new MessageButton()
-            .setLabel("Ciao")
-            .setStyle("green")
-            .setID("ciao")
+            .setStyle("SUCCESS")
+            .setCustomId(`clickButton1,${message.author.id}`)
 
-        var row = new MessageActionRow()
-            .addComponent(button1)
-            .addComponent(button2)
+        let row = new Discord.MessageActionRow()
+            .addComponents(button1)
 
-        var embed = new Discord.MessageEmbed()
-            .setTitle("Bottoni")
-            .setDescription("Clicca sul bottone")
-
-        message.channel.send(embed, row)
+        message.channel.send({ embeds: [embed], components: [row] })
     }
 
-    if (message.content == "!menu") {
-        var option1 = new MessageMenuOption()
-            .setLabel("Opzione 1")
-            .setDescription("Questa è la prima opzione")
-            .setValue("opzione1")
-            .setEmoji("😀")
+    if (message.content == "!help") {
+        let embed = new Discord.MessageEmbed()
+            .setTitle("Help")
+            .setDescription("Seleziona la pagina con il menu qua sotto")
 
-        var option2 = new MessageMenuOption()
-            .setLabel("Opzione 2")
-            .setDescription("Questa è la seconda opzione")
-            .setValue("opzione2")
-            .setEmoji("🤑")
-
-        var menu = new MessageMenu()
-            .setPlaceholder("Seleziona un elemento")
-            .setID("menu")
+        let select = new Discord.MessageSelectMenu()
+            .setCustomId("menuHelp")
+            .setPlaceholder("Seleziona una pagina")
             .setMinValues(1)
-            .setMaxValues(2)
-            .addOption(option1)
-            .addOption(option2)
+            .setMaxValues(1)
+            .addOptions([
+                {
+                    label: "Pagina 1",
+                    description: "Vai alla pagina numero 1",
+                    value: "pagina1"
+                },
+                {
+                    label: "Pagina 2",
+                    description: "Vai alla pagina numero 2",
+                    value: "pagina2"
+                },
+                {
+                    label: "Pagina 3",
+                    description: "Vai alla pagina numero 3",
+                    value: "pagina3"
+                }
+            ])
 
+        let row = new Discord.MessageActionRow()
+            .addComponents(select)
 
-        message.channel.send("Clicca sul menu", menu)
+        message.channel.send({ embeds: [embed], components: [row] })
     }
 })
 
-client.on("clickButton", (button) => {
-    if (button.id == "ciao") {
-        button.reply.send("Ciao anche a te!", true)
+client.on("interactionCreate", interaction => {
+    if (!interaction.isButton()) return
+
+    if (interaction.customId.startsWith("clickButton1")) {
+        let idUtente = interaction.customId.split(",")[1]
+        if (interaction.user.id != idUtente) return interaction.reply({ content: "Questo bottone non è tuo", ephemeral: true })
+        interaction.deferUpdate()
+
+        client.channels.cache.get("idCanale").send("Ciao")
     }
 })
 
-client.on("clickMenu", (menu) => {
-    if (menu.id == "menu") {
-        menu.reply.defer()
-        //Se si ha solo un opzione da selezionare
-        if (menu.values[0] == "opzione1")
-            menu.message.channel.send("Opzione 1")
-        if (menu.values[0] == "opzione2")
-            menu.message.channel.send("Opzione 2")
-        //Se si hanno piu opzioni da selezionare
-        if (menu.values.includes("opzione1"))
-            menu.message.channel.send("opzione 1")
-        if (menu.values.includes("opzione2"))
-            menu.message.channel.send("opzione 2")
+client.on("interactionCreate", interaction => {
+    if (!interaction.isSelectMenu()) return
+
+    if (interaction.customId == "menuHelp") {
+        interaction.deferUpdate()
+
+        switch (interaction.values[0]) {
+            case "pagina1": {
+                let embed = new Discord.MessageEmbed()
+                    .setTitle("Pagina 1")
+
+                interaction.message.edit({ embeds: [embed] })
+            } break
+            case "pagina2": {
+                let embed = new Discord.MessageEmbed()
+                    .setTitle("Pagina 2")
+
+                interaction.message.edit({ embeds: [embed] })
+            } break
+            case "pagina3": {
+                let embed = new Discord.MessageEmbed()
+                    .setTitle("Pagina 3")
+
+                interaction.message.edit({ embeds: [embed] })
+            } break
+        }
     }
 })
