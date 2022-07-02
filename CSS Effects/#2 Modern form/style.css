@@ -1,0 +1,136 @@
+*{
+    padding:0;
+    margin:0;
+}
+body{
+    background-color: lightblue;
+}
+
+#form{
+    margin: 0 auto;
+    width: fit-content;
+    margin-top: 50px;
+}
+.input *{
+    display: block;
+}
+.input{
+    margin-top: 15px;
+    position: relative;
+}
+.inputTitle{
+    font-size: 17px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+input[type = "text"], input[type = "tel"], select, input[type = "password"]{
+    width: 300px;
+    height: 40px;
+    background-color: white;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    font-family: "Roboto", sans-serif;
+    padding: 0 10px;
+}
+select{
+    width: 320px;
+}
+input[type = "radio"], .inputDescription{
+    display: inline;
+}
+.inputDiv{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px;
+}
+.inputDescription{
+    margin-left: 35px;
+    font-size: 17px;
+    font-family: "Roboto", sans-serif;
+}
+input[type = "radio"], input[type = "checkbox"]{
+    -webkit-appearance: none;
+    appearance: none;
+}
+input[type = "radio"]::before{
+    content:"";
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    position: absolute;
+    top: calc(50% - 13px);
+    left: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+input[type = "radio"]::after{
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: black;
+    position: absolute;
+    top: calc(50% - 8px);
+    left: 5px;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all 0.2s ease-in-out;
+}
+input[type = "radio"]:checked::after{
+    transform: scale(1);
+}
+#inputPassword{
+    width: calc(300px - 35px);
+    padding-right: 45px;
+}
+#passwordIcon{
+    width: 26px;
+    position: absolute;
+    right: 10px;
+    bottom: calc(20px - 13px);
+    cursor: pointer;
+}
+
+input[type = "checkbox"]::before{
+    content:"";
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    position: absolute;
+    top: calc(50% - 13px);
+    left: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input[type = "checkbox"]::after{
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: black;
+    position: absolute;
+    top: calc(50% - 8px);
+    left: 5px;
+    border-radius: 5px;
+    transform: scale(0);
+    transition: all 0.2s ease-in-out;
+}
+input[type = "checkbox"]:checked::after{
+    transform: scale(1);
+}
+
+@media screen and (max-width: 400px){
+    input[type = "text"], input[type = "tel"], select, input[type = "password"]{
+        width: 250px;
+    }
+    select{
+        width: 270px;
+    }
+    #inputPassword{
+        width: calc(250px - 35px);
+        padding-right: 45px;
+    }
+}

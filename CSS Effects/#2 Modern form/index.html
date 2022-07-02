@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="form">
+        <div class="input">
+            <span class="inputTitle">Name</span>
+            <input type="text" id="inputName" placeholder="Mario Rossi">
+        </div>
+
+        <div class="input">
+            <span class="inputTitle">Email</span>
+            <input type="text" id="inputEmail" placeholder="mariorossi@mail.com">
+        </div>
+
+        <div class="input">
+            <span class="inputTitle">Andress</span>
+            <input type="text" id="inputAndress" placeholder="Via Bianchi 32">
+        </div>
+
+        <div class="input">
+            <span class="inputTitle">Gender</span>
+            <div class="inputDiv">
+                <input type="radio" id="inputGender1" name="Gender"> <span class="inputDescription">Male</span>
+            </div>
+            <div class="inputDiv">
+                <input type="radio" id="inputGender2" name="Gender"> <span class="inputDescription">Female</span>
+            </div>
+            <div class="inputDiv">
+                <input type="radio" id="inputGender3" name="Gender"> <span class="inputDescription">Non-binary</span>
+            </div>
+            <div class="inputDiv">
+                <input type="radio" id="inputGender3" name="Gender"> <span class="inputDescription">I prefer not to
+                    say</span>
+            </div>
+        </div>
+
+        <div class="input">
+            <span class="inputTitle">Country</span>
+
+            <select name="country" id="inputCountry">
+                <option value="italia">Italia</option>
+                <option value="germania">Germania</option>
+                <option value="francia">Francia</option>
+                <option value="spagna">Spagna</option>
+                <option value="svizzera">Svizzera</option>
+                <option value="inghilterra">Inghilterra</option>
+            </select>
+        </div>
+
+        <div class="input">
+            <span class="inputTitle">Phone</span>
+            <input type="tel" id="inputPhone" placeholder="321 1231234">
+        </div>
+
+        <div class="input">
+            <span class="inputTitle">Password</span>
+            <input type="password" id="inputPassword">
+            <img src="./img/hidden.png" id="passwordIcon" onclick="changeInput()">
+        </div>
+
+        <div class="input">
+            <div class="inputDiv">
+                <input type="checkbox" id="inputTerms"> <span class="inputDescription">Agree to Terms and
+                    Conditions</span>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let state = "hidden"
+        const changeInput = () => {
+            state == "hidden" ? document.getElementById("passwordIcon").src = "./img/visible.png" : document.getElementById("passwordIcon").src = "./img/hidden.png"
+            state == "hidden" ? document.getElementById("inputPassword").type = "text" : document.getElementById("inputPassword").type = "password"
+
+            state == "hidden" ? state = "visible" : state = "hidden"
+        }
+    </script>
+</body>
+
+</html>
