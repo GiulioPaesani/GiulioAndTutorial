@@ -1,0 +1,109 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color:pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container{
+    margin: 50px 0
+}
+
+#button1{
+    background-color: white;
+    padding: 15px 40px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 10px 0 0 palevioletred;
+    transition: all 0.1s ease-in-out;
+}
+#button1:active{
+    transform: translateY(10px);
+    box-shadow: 0 0 0 0 palevioletred;
+}
+
+#button2{
+    width: 170px;
+    height: 60px;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+#button2 *{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+#button2 span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+    user-select: none;
+    transition: all 0.2s ease-in-out;
+}
+#button2 div{
+    background-color: palevioletred;
+    transform: translateX(-170px);
+    transition: all 0.2s ease-in-out;
+}
+#button2:hover div{
+    transform: translateX(0);
+}
+#button2:hover span{
+    color:white;
+}
+
+#button3{
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+    padding: 10px 20px 5px 20px;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+#button3::before{
+    content: "";
+    height: 4px;
+    width: 0%;
+    background-color: palevioletred;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 2px;
+    transition: all 0.2s ease-in-out;
+}
+#button3:hover::before{
+    width: 100%
+}
+
+#button4{
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+    padding: 15px 40px;
+    position: relative;
+    cursor: pointer;
+    user-select: none; 
+    border-radius: 5px;
+    background-color: pink;
+    transition: all 0.2s ease-in-out;
+}
+#button4:hover{
+    box-shadow: 0 0 30px 0 palevioletred;
+}
